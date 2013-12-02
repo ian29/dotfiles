@@ -5,29 +5,18 @@ export PATH=/usr/local/bin:$PATH
 
 # colors
 
-parse_git_branch() {
- git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git::\1)/'
+function _update_ps1() {
+  export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
 }
 
-if [ $TERM = 'dumb' ] ; then
-   # No color, no unicode.
-   export PS1="\w \$(parse_git_branch) > "
-else
-   export PS1="\[\033[01;34m\]\w \[\033[32m\]\$(parse_git_branch)\[\033[00m\] ▶ "
-fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-
-export CLICOLOR=1
+export PROMPT_COMMAND="_update_ps1"
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # laziness
 
 alias josm='java -jar -Xmx512M /Applications/josm-tested.jar'
 alias mou='open -a Mou.app'
-alias subl='open -a /Applications/Sublime\ Text\ 2.app/'
+alias subl='open -a /Applications/Sublime\ Text.app/'
 alias qgis='open -a /Applications/QGIS.app/'
 alias grep='grep --color=auto'
 
