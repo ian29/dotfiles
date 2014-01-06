@@ -1,7 +1,8 @@
 # paths
 
+export PATH=$PATH:$HOME/.rvm/bin
 export PATH=/usr/local/bin:$PATH
-# export CXXFLAGS="-mmacosx-version-min=10.8":$PATH
+export CXXFLAGS="-mmacosx-version-min=10.9":$PATH
 
 # colors
 
@@ -19,6 +20,7 @@ alias mou='open -a Mou.app'
 alias subl='open -a /Applications/Sublime\ Text.app/'
 alias qgis='open -a /Applications/QGIS.app/'
 alias grep='grep --color=auto'
+alias start_postgres='pg_ctl -D /usr/local/var/postgres -l ~/.pg_log start'
 
 # boxes
 
